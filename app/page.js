@@ -8,8 +8,7 @@ const SESSION_KEY = "pm_loaded";
 export default function HomePage() {
   // Always start false on server — avoids SSR/client mismatch
   const [loaded, setLoaded] = useState(false);
-  const [checked, setChecked] = useState(false);
-
+  
   // After mount, check sessionStorage — skip loader if already visited
   useEffect(() => {
     if (sessionStorage.getItem(SESSION_KEY) === "1") {
@@ -29,7 +28,7 @@ export default function HomePage() {
 
   return (
     <>
-      {!loaded && <LoadingScreen onComplete={handleComplete} />}
+      
 
       <main style={{
         minHeight: "100vh", padding: "0 0 120px",
