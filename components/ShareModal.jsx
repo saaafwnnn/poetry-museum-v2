@@ -1,7 +1,11 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { generateShareImage } from "@/lib/shareImage";
+let generateShareImage;
+
+if (typeof window !== "undefined") {
+  generateShareImage = require("@/lib/shareImage").generateShareImage;
+}
 
 export default function ShareModal({ selectedText, poem, onClose }) {
   const [imgUrl, setImgUrl] = useState(null);
